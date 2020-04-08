@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <!-- Required meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+    crossorigin="anonymous">
+<title>FINCA</title>
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				
+				<li class="nav-item"><a class="nav-link" href="/fincaListar">Listar
+						Fincas</a></li>
+			</ul>
+		</div>
+	</nav>
+	
+	<div class="container-fluid">
+	
+	
+	<div class="card" style="margin: 0.0px 0.0px 16.1px 0.0px">
+	
+	<div class="form-group" >
+		<h1  style="text-align: center" >FINCA</h1>
+
+		<form action="#" th:action="@{finca/registrar}" th:object="${finca}"
+			method="post">
+	
+		
+			<label class="form-group" for="nombre">NOMBRE</label> 
+			<input class="form-control" type="text" th:field="*{nombre}" id="nombre" placeholder="Nombre"> 
+				
+			<label class="form-group" for="direccion">DIRECCION</label> 
+			<input class="form-control" type="text" th:field="*{direccion}" id="direccion" placeholder="Direccion">
+				
+			<label class="form-group" for="telefonos">TELEFONOS</label> 
+			<input class="form-control" type="text" th:field="*{telefonos}" id="telefonos" placeholder="Telefonos">
+				
+			<label class="form-group" for="espacioTotal">ESPACIO</label> 
+			<input class="form-control" type="text" th:field="*{espacioTotal}" id="especioTotal" placeholder="EspacioTotal">
+				
+			<input  class="btn btn-primary mb-2" style="text-align: center;" type="submit" value="Registrar">
+
+			<div class="row">
+			
+				<div>
+					
+				</div>
+			</div>
+		</form>
+
+
+
+	</div>
+	</div>
+	</div>
+
+</body>
+</html>

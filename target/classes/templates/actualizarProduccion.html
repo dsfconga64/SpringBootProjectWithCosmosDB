@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+  <!-- Required meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+    crossorigin="anonymous">
+
+</head>
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li><a th:href="@{/produccionListar}">Lista Produccion</a></li>
+			</ul>
+		</div>
+	</nav>
+	
+	<br>
+	<div class="container-fluid">
+		<h1
+			style="margin: 0.0px 0.0px 16.1px 0.0px; line-height: 28.0px; font: 24.0px Times; color: #000000; -webkit-text-stroke: #000000">
+			<span class="s1"><b>Informacion de la produccion</b></span>
+		</h1>
+		<form action="#" th:action="@{/update/produccion/{id}(id=${produccion.id})}"
+			th:object="${produccion}" method="post">
+			
+			<div class="form-group">
+				<p>
+					Id finca: <input class="form-control" type="text" th:field="*{idFinca}" />
+				</p>
+			</div>
+			
+
+			<div class="form-group">
+				<p>
+					Cantidad de huevos: <input class="form-control" type="text" th:field="*{cantidadHuevos}" />
+				</p>
+			</div>
+
+			
+			<input  class="btn btn-primary mb-2" type="submit" value="Actualizar">
+			<div class="row">
+		<div class="col-2">
+			
+		</div>
+	</div>
+		</form>
+	</div>
+
+
+</body>
+</html>
