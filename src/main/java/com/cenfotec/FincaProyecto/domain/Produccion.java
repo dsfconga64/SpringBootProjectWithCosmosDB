@@ -7,6 +7,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.microsoft.azure.spring.data.cosmosdb.core.mapping.Document;
+
+@Document(collection = "tProduccion")
 @Entity 
 @Table(name = "tproduccion") 
 public class Produccion {
