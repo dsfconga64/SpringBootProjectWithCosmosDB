@@ -1,6 +1,7 @@
 package com.cenfotec.FincaProyecto.web;
 
 import java.text.ParseException;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -39,28 +40,28 @@ public class ProduccionController {
 	@PostMapping("/produccion/registrar/{id}")
 	public String empleadoSubmit(@Valid Produccion produccion, @PathVariable Long id, BindingResult result, Model model) {
 		produccion.setIdFinca(id);
-		servProd.save(produccion);
-		model.addAttribute("produccion", servProd.findAll());
+		servProd.saveProduccion(produccion);
+		model.addAttribute("produccion", servProd.getAllProducciones());
 		return "redirect:/fincaListar/";
 	}
 	
 	@GetMapping("/produccionListar")
 	public String produccionList(Model model) {
-		model.addAttribute("produccionLista", servProd.findAll());
+		model.addAttribute("produccionLista", servProd.getAllProducciones());
 		model.addAttribute("produccion", new Empleado());
 		return "produccionlistar";
 	}
 	
 	@PostMapping("/update/produccion/{id}")
-	public String updateProduccion(@PathVariable Long id, @Valid Produccion produccion, BindingResult result, Model model) {
-		servProd.save(produccion);
-		model.addAttribute("produccion", servProd.findAll());
+	public String updateProduccion(@PathVariable String id, @Valid Produccion produccion, BindingResult result, Model model) {
+		servProd.saveProduccion(produccion);
+		model.addAttribute("produccion", servProd.getAllProducciones());
 		return "redirect:/produccionListar/";
 	}
 	
 	@GetMapping("/edit/produccion/{id}")
-	public String showUpdateForm(@PathVariable Long id, Model model) {
-		Mono<Produccion> produccion = servProd.findById(id);
+	public String showUpdateForm(@PathVariable String id, Model model) {
+		List<Produccion> produccion = servProd.getProduccionesById(id);
 		model.addAttribute("produccion", produccion);
 
 		return "actualizarProduccion";
