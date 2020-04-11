@@ -10,8 +10,8 @@ import com.cenfotec.FincaProyecto.domain.Finca;
 import com.cenfotec.FincaProyecto.domain.Produccion;
 import com.microsoft.azure.spring.data.cosmosdb.repository.ReactiveCosmosRepository;
 
-public interface ProduccionRepository extends ReactiveCosmosRepository<Produccion, Long> {
+public interface ProduccionRepository extends ReactiveCosmosRepository<Produccion, String> {
 	
-	List<Produccion> findByIdFinca(Long idFinca);
+	List<Produccion> findByIdFinca(String idFinca);
 
 }
