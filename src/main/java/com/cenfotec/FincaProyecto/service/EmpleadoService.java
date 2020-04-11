@@ -2,10 +2,12 @@ package com.cenfotec.FincaProyecto.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.cenfotec.FincaProyecto.domain.Empleado;
 
 
-
+@Service
 public interface EmpleadoService {
 
 	
