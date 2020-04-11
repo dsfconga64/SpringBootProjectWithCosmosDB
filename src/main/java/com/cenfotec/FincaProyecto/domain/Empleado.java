@@ -10,7 +10,7 @@ import com.microsoft.azure.spring.data.cosmosdb.core.mapping.Document;
 	public class Empleado {
 
 		@Id  
-		public Long id;    
+		public String id;    
 		
 		 
 		private String nombre;    
@@ -36,11 +36,11 @@ import com.microsoft.azure.spring.data.cosmosdb.core.mapping.Document;
 			
 		}
 		
-		public Long getId() {
+		public String getId() {
 			return id;
 		}
 
-		public void setId(Long id) {
+		public void setId(String id) {
 			this.id = id;
 		}
 		

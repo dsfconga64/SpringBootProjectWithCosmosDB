@@ -41,38 +41,38 @@ public class EmpleadoController {
 	@PostMapping("/empleado/registrar/{id}")
 	public String empleadoSubmit(@Valid Empleado empleado, @PathVariable Long id, BindingResult result, Model model) {
 		empleado.setIdFinca(id);
-		serviceEmp.save(empleado);
-		model.addAttribute("finca", serviceEmp.findAll());
+		serviceEmp.saveEmpleado(empleado);
+		model.addAttribute("finca", serviceEmp.getAllEmpleados());
 		return "redirect:/fincaListar/";
 	}
 	
 	@GetMapping("/empleadoListar")
 	public String empleadoList(Model model) {
-		model.addAttribute("empleadoLista", serviceEmp.findAll());
+		model.addAttribute("empleadoLista", serviceEmp.getAllEmpleados());
 		model.addAttribute("empleado", new Empleado());
 		return "empleadolistar";
 	}
 	
 	@PostMapping("/update/empleado/{id}")
 	public String updateEmpleado(@PathVariable Long id, @Valid Empleado empleado, BindingResult result, Model model) {
-		repo.save(empleado);
-		model.addAttribute("empleado", serviceEmp.findAll());
+		serviceEmp.saveEmpleado(empleado);
+		model.addAttribute("empleado", serviceEmp.getAllEmpleados());
 		return "redirect:/empleadoListar/";
 	}
 	
 	@GetMapping("/edit/empleado/{id}")
-	public String showUpdateForm(@PathVariable Long id, Model model) {
-		List<Empleado> empleado = serviceEmp.findEmployeeBiyId(id);
+	public String showUpdateForm(@PathVariable String id, Model model) {
+		List<Empleado> empleado = serviceEmp.getEmpleadosById(id);
 		model.addAttribute("empleado", empleado);
 
 		return "actualizarEmpleado";
 	}
 	
 	@GetMapping("/delete/{id}")
-	public String elminarEmpleado(@PathVariable("id") Long id, Model model) {
+	public String elminarEmpleado(@PathVariable("id") String id, Model model) {
       
-		repo.deleteById(id);
-		model.addAttribute("empleados", serviceEmp.findAll());
+		serviceEmp.deleteEmpleadobyId(id);
+		model.addAttribute("empleados", serviceEmp.getAllEmpleados());
 		return "redirect:/empleadoListar/";
 	}
 

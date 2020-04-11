@@ -10,8 +10,8 @@ import java.util.List;
 
 public interface EmpleadoRepository extends ReactiveCosmosRepository<Empleado, String> {
 	
-	List<Empleado> findByIdFinca(long idFinca);
+	List<Empleado> findByIdFinca(String idFinca);
 	
-    public List<Empleado> findEmployeeBiyId(@Param("id") Long id);
+    public List<Empleado> findEmployeeBiyId(@Param("id") String id);
 
 }
