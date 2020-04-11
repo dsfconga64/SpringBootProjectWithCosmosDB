@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.cenfotec.FincaProyecto.domain.Finca;
 import com.cenfotec.FincaProyecto.repository.FincaRepository;
+import com.cenfotec.FincaProyecto.service.FincaService;
 
 import reactor.core.publisher.Mono;
 
@@ -24,7 +25,7 @@ import reactor.core.publisher.Mono;
 public class FincaController {
 
 	@Autowired
-	FincaRepository repo;
+	FincaService serviceFinca;
 
 	@RequestMapping("/")
 	public String index(Model model) throws ParseException {
@@ -34,15 +35,15 @@ public class FincaController {
 	
 	 @PostMapping("/finca/registrar")
 	    public String addUser(@Valid Finca finca, BindingResult result, Model model) {
-		 	repo.save(finca);
-	        model.addAttribute("finca", repo.findAll());
+		 	serviceFinca.save(finca);
+	        model.addAttribute("finca", serviceFinca.findAll());
 	        return "redirect:/fincaListar";
 	        
 	    }
 	 
 		@GetMapping("/fincaListar")
 		public String fincaList(Model model) {
-			model.addAttribute("fincaLista", repo.findAll());
+			model.addAttribute("fincaLista", serviceFinca.findAll());
 			model.addAttribute("finca", new Finca());
 			return "fincalistar";
 		}
@@ -53,14 +54,14 @@ public class FincaController {
 				finca.setId(id);
 				return "update-finca";
 			}
-			repo.save(finca);
-			model.addAttribute("finca", repo.findAll());
+			serviceFinca.save(finca);
+			model.addAttribute("finca", serviceFinca.findAll());
 			return "redirect:/fincaListar/";
 		}
 		
 		@GetMapping("/edit/{id}")
 		public String showUpdateForm(@PathVariable Long id, Model model) {
-			Mono<Finca> finca = repo.findById(id);
+			Mono<Finca> finca = serviceFinca.findById(id);
 			model.addAttribute("finca", finca);
 
 			return "actualizarFinca";

@@ -8,7 +8,7 @@ import com.microsoft.azure.spring.data.cosmosdb.repository.ReactiveCosmosReposit
 
 import java.util.List;
 
-public interface EmpleadoRepository extends ReactiveCosmosRepository<Empleado, Long> {
+public interface EmpleadoRepository extends ReactiveCosmosRepository<Empleado, String> {
 	
 	List<Empleado> findByIdFinca(long idFinca);
 	
