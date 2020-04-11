@@ -12,6 +12,6 @@ public interface EmpleadoRepository extends ReactiveCosmosRepository<Empleado, S
 	
 	List<Empleado> findByIdFinca(String idFinca);
 	
-    public List<Empleado> findEmployeeBiyId(@Param("id") String id);
+    public List<Empleado> findEmployeeById(@Param("id") String id);
 
 }
