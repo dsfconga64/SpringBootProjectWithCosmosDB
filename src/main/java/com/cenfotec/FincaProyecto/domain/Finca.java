@@ -11,7 +11,7 @@ import com.microsoft.azure.spring.data.cosmosdb.core.mapping.Document;
 public class Finca {
 
 	@Id    
-	public Long id;    
+	public String id;    
 	
 	
 	private String nombre;    
@@ -37,11 +37,11 @@ public class Finca {
 		
 	}
 	
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	
