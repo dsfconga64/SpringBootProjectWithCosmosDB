@@ -17,6 +17,8 @@ import com.cenfotec.FincaProyecto.domain.Empleado;
 import com.cenfotec.FincaProyecto.domain.Produccion;
 import com.cenfotec.FincaProyecto.repository.ProduccionRepository;
 
+import reactor.core.publisher.Mono;
+
 @Controller
 public class ProduccionController {
 	
@@ -57,7 +59,7 @@ public class ProduccionController {
 	
 	@GetMapping("/edit/produccion/{id}")
 	public String showUpdateForm(@PathVariable Long id, Model model) {
-		Produccion produccion = repo.findById(id).get();
+		Mono<Produccion> produccion = repo.findById(id);
 		model.addAttribute("produccion", produccion);
 
 		return "actualizarProduccion";

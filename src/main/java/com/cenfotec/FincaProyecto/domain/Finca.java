@@ -1,33 +1,28 @@
 package com.cenfotec.FincaProyecto.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity; 
-import javax.persistence.GeneratedValue; 
-import javax.persistence.GenerationType; 
-import javax.persistence.Id; 
-import javax.persistence.Table;
+
+
+import org.springframework.data.annotation.Id;
 
 import com.microsoft.azure.spring.data.cosmosdb.core.mapping.Document;
 
 @Document(collection = "tFinca")
-@Entity 
-@Table(name = "tfinca") 
+
 public class Finca {
 
-	@Id  
-	@GeneratedValue(strategy = GenerationType.IDENTITY)  
+	@Id    
 	public Long id;    
 	
-	@Column(name="nombre")  
+	
 	private String nombre;    
 	
-	@Column(name="direccion")  
+	  
 	private String direccion;    
 	
-	@Column(name="telefonos")  
+	  
 	private String telefonos; 
 	
-	@Column(name="espacioTotal")  
+	  
 	private double espacioTotal; 
  
  

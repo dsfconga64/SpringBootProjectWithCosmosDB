@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.cenfotec.FincaProyecto.domain.Finca;
 import com.cenfotec.FincaProyecto.repository.FincaRepository;
 
+import reactor.core.publisher.Mono;
+
 @Controller
 public class FincaController {
 
@@ -58,7 +60,7 @@ public class FincaController {
 		
 		@GetMapping("/edit/{id}")
 		public String showUpdateForm(@PathVariable Long id, Model model) {
-			Finca finca = repo.findById(id).get();
+			Mono<Finca> finca = repo.findById(id);
 			model.addAttribute("finca", finca);
 
 			return "actualizarFinca";

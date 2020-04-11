@@ -1,6 +1,7 @@
 package com.cenfotec.FincaProyecto.web;
 
 import java.text.ParseException;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -58,7 +59,7 @@ public class EmpleadoController {
 	
 	@GetMapping("/edit/empleado/{id}")
 	public String showUpdateForm(@PathVariable Long id, Model model) {
-		Empleado empleado = repo.findById(id).get();
+		List<Empleado> empleado = repo.findEmployeeBiyId(id);
 		model.addAttribute("empleado", empleado);
 
 		return "actualizarEmpleado";
